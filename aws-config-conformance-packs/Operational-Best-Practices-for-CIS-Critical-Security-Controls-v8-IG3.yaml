@@ -269,7 +269,7 @@ Resources:
       InputParameters:
         MinRetentionTime:
           Fn::If:
-          - CwLoggroupMinRetentionTime
+          - cwLoggroupMinRetentionTime
           - Ref: CwLoggroupMinRetentionTime
           - Ref: AWS::NoValue
       Source:
