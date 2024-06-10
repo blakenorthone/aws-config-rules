@@ -1305,16 +1305,16 @@ Resources:
         Owner: AWS
         SourceIdentifier: SAGEMAKER_NOTEBOOK_NO_DIRECT_INTERNET_ACCESS
     Type: AWS::Config::ConfigRule
-  SecretsmanagerRotationEnabledCheck:
-    Properties:
-      ConfigRuleName: secretsmanager-rotation-enabled-check
-      Scope:
-        ComplianceResourceTypes:
-        - AWS::SecretsManager::Secret
-      Source:
-        Owner: AWS
-        SourceIdentifier: SECRETSMANAGER_ROTATION_ENABLED_CHECK
-    Type: AWS::Config::ConfigRule
+  # SecretsmanagerRotationEnabledCheck:
+  #   Properties:
+  #     ConfigRuleName: secretsmanager-rotation-enabled-check # https://docs.aws.amazon.com/config/latest/developerguide/secretsmanager-rotation-enabled-check.html
+  #     Scope:
+  #       ComplianceResourceTypes:
+  #       - AWS::SecretsManager::Secret
+  #     Source:
+  #       Owner: AWS
+  #       SourceIdentifier: SECRETSMANAGER_ROTATION_ENABLED_CHECK
+  #   Type: AWS::Config::ConfigRule
   SecretsmanagerUsingCmk:
     Properties:
       ConfigRuleName: secretsmanager-using-cmk
