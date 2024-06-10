@@ -1428,6 +1428,11 @@ Resources:
         SourceIdentifier: AWS_CONFIG_PROCESS_CHECK
     Type: AWS::Config::ConfigRule
 Conditions:
+  cwLoggroupMinRetentionTime:
+    Fn::Not:
+    - Fn::Equals:
+      - ''
+      - Ref: CwLoggroupMinRetentionTime
   accessKeysRotatedParamMaxAccessKeyAge:
     Fn::Not:
     - Fn::Equals:
