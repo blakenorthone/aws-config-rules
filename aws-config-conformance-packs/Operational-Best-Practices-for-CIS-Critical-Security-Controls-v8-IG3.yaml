@@ -10,6 +10,11 @@
 ##################################################################################
 
 Parameters:
+  # custom params
+  CwLoggroupMinRetentionTime: # rule: cw-loggroup-retention-period-check
+    Default: '365'
+    Type: String
+  # default params
   AccessKeysRotatedParamMaxAccessKeyAge:
     Default: '90'
     Type: String
@@ -260,7 +265,13 @@ Resources:
     Type: AWS::Config::ConfigRule
   CwLoggroupRetentionPeriodCheck:
     Properties:
-      ConfigRuleName: cw-loggroup-retention-period-check
+      ConfigRuleName: cw-loggroup-retention-period-check # https://docs.aws.amazon.com/config/latest/developerguide/cw-loggroup-retention-period-check.html
+      InputParameters:
+        MinRetentionTime:
+          Fn::If:
+          - CwLoggroupMinRetentionTime
+          - Ref: CwLoggroupMinRetentionTime
+          - Ref: AWS::NoValue
       Source:
         Owner: AWS
         SourceIdentifier: CW_LOGGROUP_RETENTION_PERIOD_CHECK
